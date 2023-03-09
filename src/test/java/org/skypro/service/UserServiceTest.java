@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
-import org.skypro.dao.impl.UserDaoImpl;
+import org.skypro.dao.UserDao;
 import org.skypro.model.User;
 import org.skypro.service.impl.UserServiceImpl;
 
@@ -19,7 +19,7 @@ class UserServiceTest {
 
 
     @Mock
-    private UserDaoImpl userDaoMock;
+    private UserDao userDaoMock;
     @InjectMocks
     private UserServiceImpl out;
 

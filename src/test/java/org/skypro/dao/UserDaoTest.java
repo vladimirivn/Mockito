@@ -5,8 +5,6 @@ import org.junit.jupiter.api.Test;
 import org.skypro.dao.impl.UserDaoImpl;
 import org.skypro.model.User;
 
-import java.util.List;
-
 import static org.junit.jupiter.api.Assertions.*;
 
 class UserDaoTest {

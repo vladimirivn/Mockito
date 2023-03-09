@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class UserDaoImpl implements UserDao {
-    private static final List<User> users = new ArrayList<>();
+    private final List<User> users = new ArrayList<>();
 
     public UserDaoImpl() {
         users.add(new User("Vladimir"));
