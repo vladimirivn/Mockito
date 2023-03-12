@@ -8,7 +8,7 @@ import org.skypro.service.UserService;
 import java.util.List;
 
 public class UserServiceImpl implements UserService {
-    private UserDao userDao;
+    private UserDao userDao = new UserDaoImpl();
 
 //    public UserServiceImpl() {
 //        this.userDao = new UserDaoImpl();

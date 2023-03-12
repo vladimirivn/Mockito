@@ -9,14 +9,19 @@ import org.skypro.dao.UserDao;
 import org.skypro.model.User;
 import org.skypro.service.impl.UserServiceImpl;
 
+import java.util.List;
+
 import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 
 class UserServiceTest {
-    private final User existUser = new User("Vladimir");
-    private final User notExistUser = new User("Voldomir");
-    private final User user = new User("Vladimir");
-
+    private static final User CORRECT_USER = new User("User1");
+    private static final User NOT_CORRECT_USER = new User("User2");
+    private static final List<User> users = List.of(
+            CORRECT_USER,
+            new User("User3"),
+            new User("User4")
+    );
 
     @Mock
     private UserDao userDaoMock;
@@ -30,14 +35,18 @@ class UserServiceTest {
     @Test
     @DisplayName("Возврат true если есть в списке")
     void shouldReturnTrueWhenUserExist() {
-        when(userDaoMock.getUserByName(existUser.getName())).thenReturn(user);
-        assertTrue(out.checkUserExist(existUser));
+        when(userDaoMock.findAllUsers()).thenReturn(users);
+        assertEquals(users, userDaoMock.findAllUsers());
+        assertTrue(out.checkUserExist(CORRECT_USER));
+        verify(userDaoMock, times(2)).findAllUsers();
     }
 
     @Test
     @DisplayName("Возврат false если нет в списке")
     void shouldReturnFalseWhenUserNotExist() {
-        when(userDaoMock.getUserByName(notExistUser.getName())).thenReturn(null);
-        assertFalse(out.checkUserExist(notExistUser));
+        when(userDaoMock.findAllUsers()).thenReturn(users);
+        assertEquals(users, userDaoMock.findAllUsers());
+        assertFalse(out.checkUserExist(NOT_CORRECT_USER));
+        verify(userDaoMock, times(2)).findAllUsers();
     }
 }

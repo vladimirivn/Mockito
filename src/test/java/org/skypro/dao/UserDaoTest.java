@@ -8,7 +8,7 @@ import org.skypro.model.User;
 import static org.junit.jupiter.api.Assertions.*;
 
 class UserDaoTest {
-    private final UserDaoImpl userDao = new UserDaoImpl();
+    private static final UserDaoImpl userDao = new UserDaoImpl();
     public static final String VALID_NAME = "Vladimir";
     public static final String INVALID_NAME = "Voldomir";
 
